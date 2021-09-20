@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+
 from sense_hat import SenseHat
 from sys import argv
 
 from measure_display import show_temp, show_humid, show_value_bars
+from show_message import show_message
+from snake import run_snake
 
 
 def main():
@@ -14,6 +18,9 @@ def main():
         "h": show_humid,
         "humid": show_humid,
         "humidity": show_humid,
+        "m": show_message,
+        "message": show_message,
+        "snake": run_snake
     }
 
     try:
@@ -31,7 +38,10 @@ def main():
     sense.set_rotation(180)
     sense.low_light = True
     try:
-        request_mapping[request](sense, *other_args)
+        if len(other_args) == 1:
+            request_mapping[request](sense, other_args)
+        else:
+            request_mapping[request](sense, *other_args)
     except Exception as e:
         sense.clear()
         raise e
