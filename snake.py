@@ -17,7 +17,7 @@ class Snake:
     COLORS = {
         "apple": [255, 0, 0],
         "snake": [0, 255, 0],
-        "head": [100, 255, 100],
+        "head": [0, 255, 255],
         "back": [0, 0, 0]
     }
 
@@ -67,8 +67,17 @@ class Snake:
             self._move_right("key")
 
     def _place_apple(self):
-        x, y = random.randint(0, 7), random.randint(0, 7)
-        self._apple_location = [x, y]
+        # random until location not on snake --> kinda slow but does not matter in this case
+        while True:
+            x, y = random.randint(0, 7), random.randint(0, 7)
+            matched = False
+            for segment in self._snake:
+                if [x, y] == segment:
+                    matched = True
+                    break
+            if not matched:
+                self._apple_location = [x, y]
+                break
         self.sense.set_pixel(*self._apple_location, self.COLORS["apple"])
 
     def run(self):
