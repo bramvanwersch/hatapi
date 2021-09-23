@@ -6,6 +6,8 @@ from sys import argv
 from measure_display import show_temp, show_humid, show_value_bars
 from show_message import show_message
 from snake import run_snake
+from screen_savers import run_screen_saver
+from run_q_screensaver import run_learning
 
 
 def main():
@@ -20,9 +22,18 @@ def main():
         "humidity": show_humid,
         "m": show_message,
         "message": show_message,
-        "snake": run_snake
+        "snake": run_snake,
+        "ss": run_screen_saver,
+        "screensaver": run_screen_saver,
+        "qs": run_learning,
+        "qscreensaver": run_learning
     }
 
+    sense = SenseHat()
+    sense.set_rotation(180)
+    sense.low_light = True
+    # make sure to always clear even if no valid arguments are supplied
+    sense.clear()
     try:
         request = argv[1]
         other_args = argv[2:]
@@ -34,11 +45,9 @@ def main():
         print(f"Unknown request: {request}. Choose one of: {', '.join(request_mapping.keys())}")
         return
 
-    sense = SenseHat()
-    sense.set_rotation(180)
-    sense.low_light = True
     try:
         if len(other_args) == 1:
+            # or strings become individual args
             request_mapping[request](sense, other_args)
         else:
             request_mapping[request](sense, *other_args)
@@ -46,16 +55,6 @@ def main():
         sense.clear()
         raise e
     sense.clear()
-
-
-class ScreenSaverBlob:
-    def __init__(self, pos):
-        self.pos = loc
-
-
-class ScreenSaver:
-    def __init__(self):
-        self.field = [(0, 0, 0) for _ in range(8)]
 
 
 if __name__ == '__main__':
