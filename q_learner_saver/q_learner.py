@@ -21,6 +21,7 @@ class QLearner:
         self._all_actions = range(self.environment.nr_possible_actions())
         self._max_tries = max_tries
         self._action_mode = action_mode
+        self._last_rewards = []
 
         self._training_rewards = []
         self._training_generations = []
@@ -51,14 +52,15 @@ class QLearner:
                     break
                 state = next_state
             rewards.append(total_generation_reward)
-            if report_rate != 0 and generation_nr != 0 and self.total_generations % report_rate == 0:
+            if report_rate != 0 and self.total_generations != 0 and self.total_generations % report_rate == 0:
                 if verbose:
-                    print(f"Simulation ran for {self.total_generations} of generations")
-                self._training_rewards.append(sum(rewards) / len(rewards))
-                self._training_generations.append(self.total_generations + generation_nr)
-                rewards = []
+                    print(f"Simulation ran for {self.total_generations} generations")
+                    if len(self._last_rewards) > 0:
+                        print(f"Average reward: {sum(self._last_rewards) / len(self._last_rewards)}")
+                self._last_rewards = []
             self._epsilon *= self._epsilon_decay
         self.total_generations += nr_generations
+        self._last_rewards.extend(rewards)
 
     def test(self):
 

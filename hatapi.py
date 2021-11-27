@@ -8,6 +8,7 @@ from show_message import show_message
 from snake import run_snake
 from screen_savers import run_screen_saver
 from run_q_screensaver import run_learning
+from camera_stuff import take_photo
 
 
 def main():
@@ -26,7 +27,9 @@ def main():
         "ss": run_screen_saver,
         "screensaver": run_screen_saver,
         "qs": run_learning,
-        "qscreensaver": run_learning
+        "qscreensaver": run_learning,
+        "photo": take_photo,
+        "p": take_photo
     }
 
     sense = SenseHat()
