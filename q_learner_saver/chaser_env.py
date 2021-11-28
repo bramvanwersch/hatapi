@@ -74,11 +74,12 @@ class FindTargetEnvironment(Environment):
         number = random.randint(0, 3)
         self._indexed_moves[number](agent_pos)  # noqa
 
-    def state_representation(self) -> Any:
-        self.sense.set_pixel(*self.target_pos, (0, 255, 0))
-        self.sense.set_pixel(*self.enemy_pos, (255, 0, 0))
-        self.sense.set_pixel(*self.player_pos, (200, 200, 200))
-        time.sleep(0.1)
+    def state_representation(self, show_visual=False) -> Any:
+        if show_visual:
+            self.sense.set_pixel(*self.target_pos, (0, 255, 0))
+            self.sense.set_pixel(*self.enemy_pos, (255, 0, 0))
+            self.sense.set_pixel(*self.player_pos, (200, 200, 200))
+            time.sleep(0.1)
         return None
 
     def succes(self):

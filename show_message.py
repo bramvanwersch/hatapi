@@ -3,7 +3,7 @@ import argparse
 from utility import str_to_color
 
 
-def show_message(sense, cmd_arguments):
+def show_message(sense, *cmd_arguments):
     parser = get_arg_parser()
     argument_class = parser.parse_args(cmd_arguments)
     sense.show_message(argument_class.message, argument_class.text_speed,

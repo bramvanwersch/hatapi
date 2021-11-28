@@ -62,7 +62,7 @@ class QLearner:
         self.total_generations += nr_generations
         self._last_rewards.extend(rewards)
 
-    def test(self):
+    def test(self, show_visual=False):
 
         state = self.environment.reset()
         for i in range(self._max_tries):
@@ -71,8 +71,8 @@ class QLearner:
             action = self.get_max_action(action_probabilities)
             next_state, reward, done = self.environment.step(action)
 
-            # give a visual of the environment
-            state_presentation = self.environment.state_representation()
+            # give a visual of the environment or get the reward
+            state_presentation = self.environment.state_representation(show_visual=show_visual)
             if state_presentation is not None:
                 print(state_presentation)
             if done:

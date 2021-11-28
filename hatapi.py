@@ -49,11 +49,7 @@ def main():
         return
 
     try:
-        if len(other_args) == 1:
-            # or strings become individual args
-            request_mapping[request](sense, other_args)
-        else:
-            request_mapping[request](sense, *other_args)
+        request_mapping[request](sense, *other_args)
     except Exception as e:
         sense.clear()
         raise e
