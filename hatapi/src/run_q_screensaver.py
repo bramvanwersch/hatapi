@@ -34,6 +34,19 @@ def run_learning(sense, *args):
         return
 
     target_env = chaser_env.FindTargetEnvironment(sense, (8, 8))
+    if infile is None and outfile is not None:
+        if pathlib.Path(f"{TABLES_DIR}{os.sep}{outfile}.pickle").exists():
+            total_ex = 1
+            while True:
+                answer = input("You are about to overwrite an existing learning table. Are you sure? (Y/N)")
+                if answer.upper() == "Y":
+
+                    break
+                elif answer.upper() == "N":
+                    return
+                else:
+                    print("Please type Y or N" + ("!" * total_ex))
+                    total_ex += 1
     if infile is not None:
         try:
             learner = q_learner.QLearner.load(f"{TABLES_DIR}{os.sep}{infile}.pickle", sense)
