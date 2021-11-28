@@ -1,6 +1,6 @@
 import argparse
 
-from utility import str_to_color
+from hatapi.src.utility import str_to_color
 
 
 def show_message(sense, *cmd_arguments):

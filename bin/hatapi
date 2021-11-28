@@ -3,12 +3,12 @@
 from sense_hat import SenseHat
 from sys import argv
 
-from measure_display import show_temp, show_humid, show_value_bars
-from show_message import show_message
-from snake import run_snake
-from screen_savers import run_screen_saver
-from run_q_screensaver import run_learning
-from camera_stuff import take_photo
+from hatapi.src.measure_display import show_temp, show_humid, show_value_bars
+from hatapi.src.show_message import show_message
+from hatapi.src.snake import run_snake
+from hatapi.src.screen_savers import run_screen_saver
+from hatapi.src.run_q_screensaver import run_learning
+from hatapi.src.camera_stuff import take_photo
 
 
 def main():

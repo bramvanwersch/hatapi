@@ -1,4 +1,4 @@
-from constants import NUMBERS, COLORS
+from hatapi.src.constants import NUMBERS, COLORS
 
 
 def show_numbers(sense, number1, number2):

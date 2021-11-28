@@ -2,7 +2,7 @@ import random
 import matplotlib.pyplot as plt
 import pickle
 
-from q_learner_saver import environments
+from hatapi.src.q_learner_saver import environments
 
 
 class QLearner:

@@ -1,6 +1,6 @@
 import time
 
-from utility import show_numbers
+from hatapi.src.utility import show_numbers
 
 
 def show_value_bars(sense, display_time=5):

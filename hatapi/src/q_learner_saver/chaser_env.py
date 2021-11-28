@@ -3,7 +3,7 @@ import random
 import numpy as np
 import time
 
-from q_learner_saver.environments import Environment
+from hatapi.src.q_learner_saver.environments import Environment
 
 
 class FindTargetEnvironment(Environment):

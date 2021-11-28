@@ -2,8 +2,8 @@ import argparse
 import pathlib
 import os
 
-from q_learner_saver import q_learner
-from q_learner_saver import chaser_env
+from hatapi.src.q_learner_saver import q_learner
+from hatapi.src.q_learner_saver import chaser_env
 
 file_dir_path = pathlib.Path(__file__).parent.resolve()
 TABLES_DIR = pathlib.Path(f"{file_dir_path}{os.sep}q_learner_saver{os.sep}tables{os.sep}")
