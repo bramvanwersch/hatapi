@@ -173,10 +173,14 @@ def find_in_between(start, end):
 
 def show_digital_clock(sense, show_seconds):
     while True:
-        current_time = datetime.datetime.now()
-        if show_seconds:
-            string_time = f"{current_time.hour}:{current_time.minute}:{current_time.second}"
-        else:
-            string_time = f"{current_time.hour}:{current_time.minute}"
-        sense.show_message(string_time)
-        time.sleep(1)
+        try:
+            current_time = datetime.datetime.now()
+            if show_seconds:
+                string_time = f"{current_time.hour}:{current_time.minute}:{current_time.second}"
+            else:
+                string_time = f"{current_time.hour}:{current_time.minute}"
+            sense.show_message(string_time)
+            time.sleep(1)
+        except KeyboardInterrupt:
+            break
+    sense.clear()
