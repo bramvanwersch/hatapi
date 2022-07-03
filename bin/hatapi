@@ -9,6 +9,7 @@ from hatapi.src.snake import run_snake
 from hatapi.src.screen_savers import run_screen_saver
 from hatapi.src.run_q_screensaver import run_learning
 from hatapi.src.camera_stuff import take_photo
+from hatapi.src.clocks import show_clock
 
 
 def main():
@@ -29,7 +30,8 @@ def main():
         "qs": run_learning,
         "qscreensaver": run_learning,
         "photo": take_photo,
-        "p": take_photo
+        "p": take_photo,
+        "clock": show_clock
     }
 
     sense = SenseHat()
